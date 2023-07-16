@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Contact us</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Contact us</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 </head>
 <body>
-	<div class="container">
-		<div class="contact-box">
-			<div class="left"></div>
-			<div class="right">
-				<h2>Contact Us</h2>
-				<input type="text" class="field" placeholder="Your Name">
-				<input type="text" class="field" placeholder="Your Email">
-				<input type="text" class="field" placeholder="Phone">
-				<textarea placeholder="Message" class="field"></textarea>
-				<button class="btn">Send</button>
-			</div>
-		</div>
-	</div>
+<div class="container">
+    <div class="contact-box">
+        <div class="left"></div>
+        <div class="right">
+            <form onsubmit="sendEmail(); reset(); return false;">
+                <h2>You can send email</h2>
+                <input type="text" class="field" id="name" placeholder="Your Name" required>
+                <input type="email" class="field" id="email" placeholder="Your Email" required>
+                <input type="text" class="field" id="phone" placeholder="Phone number" required>
+                <textarea placeholder="Message" id="message" class="field"></textarea>
+                <button class="btn" id="btn">Send Email</button>
+                <h3 class="offer-title">Or you can</h3>
+            </form>
+            <button onclick="call()" class="btn-call">Make a call</button>
+        </div>
+    </div>
+</div>
 </body>
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+<script>
+    function sendEmail() {
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "yaroslavmudriy2301@gmail.com",
+            Password: "FB1C68FEC661CBF4BDE24939402C7BC3E9D8",
+            To: 'yaroslav7v@gmail.com',
+            From: document.getElementById("email").value,
+            Subject: "New Contact Form Enquiry",
+            Body: "And this is the body"
+        }).then(
+            message => alert(message)
+        );
+    }
+</script>
+<script>
+    function call() {
+        window.location.href = "tel:+380972796855";
+    }
+</script>
 </html>

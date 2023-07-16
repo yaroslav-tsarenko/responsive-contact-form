@@ -33,6 +33,7 @@ body{
 	z-index: -1;
 }
 .contact-box{
+	border-radius: 15px;
 	max-width: 850px;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -44,9 +45,11 @@ body{
 }
 
 .left{
+	width: 100%;
 	background: url("img/bg.jpg") no-repeat center;
 	background-size: cover;
 	height: 100%;
+	border-radius: 15px 0 0 15px;
 }
 
 .right{
@@ -57,6 +60,11 @@ h2{
 	position: relative;
 	padding: 0 0 10px;
 	margin-bottom: 10px;
+}
+
+.offer-title{
+	position: relative;
+	margin: 7px;
 }
 
 h2:after{
@@ -80,6 +88,7 @@ h2:after{
 	font-size: 1.1rem;
 	margin-bottom: 22px;
 	transition: .3s;
+	border-radius: 10px;
 }
 
 .field:hover{
@@ -100,12 +109,30 @@ textarea{
 	outline: none;
 	cursor: pointer;
 	transition: .3s;
+	border-radius: 10px;
 }
 
-.btn:hover{
+.btn-call{
+	width: 100%;
+	padding: 0.5rem 1rem;
+	background-color: #2ecc71;
+	color: #fff;
+	font-size: 1.1rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: .3s;
+	border-radius: 10px;
+}
+
+
+.btn-call:hover{
     background-color: #27ae60;
 }
 
+.btn:hover{
+	background-color: #27ae60;
+}
 .field:focus{
     border: 2px solid rgba(30,85,250,0.47);
     background-color: #fff;
@@ -113,9 +140,15 @@ textarea{
 
 @media screen and (max-width: 880px){
 	.contact-box{
-		grid-template-columns: 1fr;
+		grid-template-columns: 10fr;
+
 	}
 	.left{
 		height: 200px;
+		border-radius: 15px 15px 0 0;
 	}
+	.right{
+		padding: 26px 5px;
+	}
+
 }
