@@ -6,6 +6,8 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <link rel="icon" href="./img/logo1.png" type="image/x-icon">
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
 </head>
 <body>
 <div class="container">
@@ -14,34 +16,68 @@
         <div class="right">
             <form onsubmit="sendEmail(); reset(); return false;">
                 <h2>You can send email</h2>
-                <input type="text" class="field" id="name" placeholder="Your Name" required>
-                <input type="email" class="field" id="email" placeholder="Your Email" required>
-                <input type="text" class="field" id="phone" placeholder="Phone number" required>
-                <textarea placeholder="Message" id="message" class="field"></textarea>
+                             <input type="text" class="field" id="name" placeholder="Your Name" required>
+                            <input type="email" class="field" id="email" placeholder="Your Email" required>
+                             <input type="text" class="field" id="phone" placeholder="Phone number" required>
+                <textarea placeholder="Message" class="field" id="message" ></textarea>
                 <button class="btn" id="btn">Send Email</button>
                 <h3 class="offer-title">Or you can</h3>
             </form>
             <button onclick="call()" class="btn-call">Make a call</button>
         </div>
     </div>
+
+
 </div>
 </body>
-<script src="https://smtpjs.com/v3/smtp.js">
-</script>
+
 <script>
-    function sendEmail() {
+
+    let btn = document.getElementById('btn');
+    btn.addEventListener('click', function (e){
+        e.preventDefault()
+        let name = document.getElementById('name').value
+        let email = document.getElementById('email').value
+        let phone = document.getElementById('phone').value
+        let message = document.getElementById('message').value
+        let body = 'name: ' + name + '<br/> email: ' + email + '<br/> phone: ' + phone + '<br/> message: ' + message
         Email.send({
-            Host: "smtp.elasticemail.com",
-            Username: "yaroslavmudriy2301@gmail.com",
-            Password: "FB1C68FEC661CBF4BDE24939402C7BC3E9D8",
-            To: 'sales@smartlogmoving.com',
-            From: document.getElementById("email").value,
-            Subject: "New Contact Form Enquiry",
-            Body: "And this is the body"
+            SecureToken : "f8b8d38d-835b-442d-8e38-cead7859551c",
+            To : 'yaroslav7v@gmail.com',
+            From : "yaroslav7v@gmail.com",
+            Subject : "Contact message",
+            Body : body
         }).then(
             message => alert(message)
         );
-    }
+    })
+/*
+    let name = document.getElementsByClassName("field-name");
+let email = document.getElementsByClassName("field-email");
+let phone = document.getElementsByClassName("field-phone");
+let message = document.getElementsByClassName("field-message");
+
+    let ebody = `
+    <h1>First Name: </h1>${name.value}
+    <br>
+    <h1>Email: </h1>${email.value}
+    <br>
+    <h1>Phone number: </h1>${phone.value}
+    <br>
+    <h1>Message: </h1>${message.value}
+    `;
+    function sendEmail() {
+        Email.send({
+            SecureToken : "f8b8d38d-835b-442d-8e38-cead7859551c",
+            To : 'yaroslav7v@gmail.com',
+            From : "yaroslav7v@gmail.com",
+            Subject : "Email from " + email.value,
+            Body : ebody
+        }).then(
+            message => alert(message)
+        );
+        /!*f8b8d38d-835b-442d-8e38-cead7859551c*!/
+    }*/
 </script>
 <script>
     function call() {
