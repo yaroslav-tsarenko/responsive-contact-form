@@ -6,6 +6,8 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <link rel="icon" href="./img/logo1.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Golos+Text:wght@400;500;600;700;800;900&family=Kablammo&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&family=Poppins:ital,wght@0,400;0,600;0,700;1,500;1,700&family=Press+Start+2P&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Tektur:wght@400;700&family=Ubuntu:wght@400;500;700&display=swap"
+          rel="stylesheet">
     <script src="https://smtpjs.com/v3/smtp.js">
     </script>
 </head>
@@ -16,68 +18,86 @@
         <div class="right">
             <form onsubmit="sendEmail(); reset(); return false;">
                 <h2>You can send email</h2>
-                             <input type="text" class="field" id="name" placeholder="Your Name" required>
-                            <input type="email" class="field" id="email" placeholder="Your Email" required>
-                             <input type="text" class="field" id="phone" placeholder="Phone number" required>
-                <textarea placeholder="Message" class="field" id="message" ></textarea>
+                <input type="text" class="field" id="name" placeholder="Your Name" required>
+                <input type="email" class="field" id="email" placeholder="Your Email" required>
+                <input type="text" class="field" id="phone" placeholder="Phone number" required>
+                <textarea placeholder="Message" class="field" id="message"></textarea>
                 <button class="btn" id="btn">Send Email</button>
                 <h3 class="offer-title">Or you can</h3>
             </form>
             <button onclick="call()" class="btn-call">Make a call</button>
         </div>
     </div>
-
-
 </div>
 </body>
 
 <script>
 
     let btn = document.getElementById('btn');
-    btn.addEventListener('click', function (e){
+
+    btn.addEventListener('click', function (e) {
         e.preventDefault()
         let name = document.getElementById('name').value
         let email = document.getElementById('email').value
         let phone = document.getElementById('phone').value
         let message = document.getElementById('message').value
-        let body = 'name: ' + name + '<br/> email: ' + email + '<br/> phone: ' + phone + '<br/> message: ' + message
+        let body = '<h3>Name:</h3> ' + name + '<br/> <h3>Email:</h3> ' + email + '<br/> <h3>Phone: </h3> ' + phone + '<br/> <h3>Message: </h3> ' + message
         Email.send({
-            SecureToken : "f8b8d38d-835b-442d-8e38-cead7859551c",
-            To : 'yaroslav7v@gmail.com',
-            From : "yaroslav7v@gmail.com",
-            Subject : "Contact message",
-            Body : body
+            SecureToken: "f8b8d38d-835b-442d-8e38-cead7859551c",
+            To: 'mc110272@gmail.com',          /*sales@smartlogmoving.com*/
+            From: "mc110272@gmail.com",
+            Subject: "Contact message",
+            Body: body
         }).then(
             message => alert(message)
         );
+        sendToAnotherEmail()
     })
-/*
-    let name = document.getElementsByClassName("field-name");
-let email = document.getElementsByClassName("field-email");
-let phone = document.getElementsByClassName("field-phone");
-let message = document.getElementsByClassName("field-message");
 
-    let ebody = `
-    <h1>First Name: </h1>${name.value}
-    <br>
-    <h1>Email: </h1>${email.value}
-    <br>
-    <h1>Phone number: </h1>${phone.value}
-    <br>
-    <h1>Message: </h1>${message.value}
-    `;
-    function sendEmail() {
+    function sendToAnotherEmail() {
+        let name = document.getElementById('name').value
+        let email = document.getElementById('email').value
+        let phone = document.getElementById('phone').value
+        let message = document.getElementById('message').value
+        let body = '<h3>Name:</h3> ' + name + '<br/> <h3>Email:</h3> ' + email + '<br/> <h3>Phone: </h3> ' + phone + '<br/> <h3>Message: </h3> ' + message
         Email.send({
-            SecureToken : "f8b8d38d-835b-442d-8e38-cead7859551c",
-            To : 'yaroslav7v@gmail.com',
-            From : "yaroslav7v@gmail.com",
-            Subject : "Email from " + email.value,
-            Body : ebody
+            SecureToken: "f8b8d38d-835b-442d-8e38-cead7859551c",
+            To: 'sales@smartlogmoving.com',       /*yyrlsvvvvvv@gmail.com*/
+            From: "sales@smartlogmoving.com",
+            Subject: "Contact message",
+            Body: body
         }).then(
             message => alert(message)
         );
-        /!*f8b8d38d-835b-442d-8e38-cead7859551c*!/
-    }*/
+    }
+
+
+      /*  let name = document.getElementsByClassName("field-name");
+    let email = document.getElementsByClassName("field-email");
+    let phone = document.getElementsByClassName("field-phone");
+    let message = document.getElementsByClassName("field-message");
+
+        let ebody = `
+        <h1>First Name: </h1>${name.value}
+        <br>
+        <h1>Email: </h1>${email.value}
+        <br>
+        <h1>Phone number: </h1>${phone.value}
+        <br>
+        <h1>Message: </h1>${message.value}
+        `;
+        function sendEmail() {
+            Email.send({
+                SecureToken : "f8b8d38d-835b-442d-8e38-cead7859551c",
+                To : 'sales@smartlogmoving.com',
+                From : "sales@smartlogmoving.com",
+                Subject : "Email from " + email.value,
+                Body : ebody
+            }).then(
+                message => alert(message)
+            );
+            /!*f8b8d38d-835b-442d-8e38-cead7859551c*!/
+        }*/
 </script>
 <script>
     function call() {
